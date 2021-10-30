@@ -1,0 +1,8 @@
+{
+  "name": "desafio-descomplica",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:cesarsl/desafio-descomplica.git",
+  "author": "César Souza Liedke <cesarsl@gmail.com>",
+  "license": "MIT"
+}
