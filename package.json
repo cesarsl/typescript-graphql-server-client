@@ -4,5 +4,13 @@
   "main": "index.js",
   "repository": "git@github.com:cesarsl/desafio-descomplica.git",
   "author": "César Souza Liedke <cesarsl@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^3.4.0",
+    "class-validator": "^0.13.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.4.0",
+    "type-graphql": "^1.1.1",
+    "typescript": "^4.4.4"
+  }
 }
