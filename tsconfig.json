@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "lib": ["dom", "es6", "esnext.asynciterable"],
+      "moduleResolution": "node",
+      "rootDir": "./src",
+      "outDir": "./dist",
+      "strict": true,
+      "strictPropertyInitialization": false,
+      "sourceMap": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true
+    },
+    "include": ["./src/**/*", "./src/*"],
+    "exclude": ["./test", "./node_modules", "./dist"]
+}
