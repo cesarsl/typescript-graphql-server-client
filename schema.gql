@@ -3,6 +3,23 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type DatabaseUserModel {
+  cpf: String!
+  email: String!
+  id: Int!
+  nome: String!
+}
+
+type Mutation {
+  createUser(payload: UserInput!): Boolean!
+}
+
 type Query {
-  allUsers: String!
+  getUsers(cpf: String, email: String, id: Int, nome: String): [DatabaseUserModel!]
+}
+
+input UserInput {
+  cpf: String!
+  email: String!
+  nome: String!
 }

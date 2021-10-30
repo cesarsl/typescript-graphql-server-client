@@ -1,30 +1,32 @@
-import { ApolloServer } from 'apollo-server-express';
-import * as Express from 'express';
-import 'reflect-metadata';
-import { buildSchema } from 'type-graphql';
-import UserResolver from './resolvers/User'
-
+import { ApolloServer } from "apollo-server-express";
+import * as Express from "express";
+import { createConnection } from "typeorm";
+import "reflect-metadata";
+import { buildSchema } from "type-graphql";
+import UserResolver from "./resolvers/User";
 
 async function startApi() {
-    const app = Express();
+  const app = Express();
 
-    const schema = await buildSchema({
-        resolvers: [UserResolver],
-        emitSchemaFile: true
-    });
+  await createConnection();
 
-    const server = new ApolloServer({
-        schema,
-        context: ({req, res}) => ({req, res}),
-    });
+  const schema = await buildSchema({
+    resolvers: [UserResolver],
+    emitSchemaFile: true,
+  });
 
-    await server.start();
+  const server = new ApolloServer({
+    schema,
+    context: ({ req, res }) => ({ req, res }),
+  });
 
-    server.applyMiddleware({ app });
+  await server.start();
 
-    app.listen(4000, () => 
-        console.log('Servidor executando em http://localhost:4000/graphql')
-    );
+  server.applyMiddleware({ app });
+
+  app.listen(4000, () =>
+    console.log("Servidor executando em http://localhost:4000/graphql")
+  );
 }
 
 startApi();
