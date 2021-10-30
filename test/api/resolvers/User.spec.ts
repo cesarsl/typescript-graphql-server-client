@@ -1,9 +1,7 @@
 "use strict";
 
 import * as fs from "fs";
-import * as path from "path";
-import UserResolver from "../../src/api/resolvers/User";
-import { expect } from "chai";
+import UserResolver from "../../../src/api/resolvers/User";
 
 const EasyGraphQLTester = require("easygraphql-tester");
 
