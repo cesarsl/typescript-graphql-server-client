@@ -1,12 +1,27 @@
 import { Arg, Int, Query, Mutation, Resolver } from "type-graphql";
 import { DatabaseUserModel } from "../entity/User";
-import { UserInput } from "../entity/UserInput";
+import { UserInput, PartialUpdateUserInput } from "../entity/UserInput";
 
 @Resolver((of) => DatabaseUserModel)
 export default class {
   @Mutation((type) => Boolean)
   async createUser(@Arg("payload", (type) => UserInput) payload: UserInput) {
     await DatabaseUserModel.insert(payload);
+    return true;
+  }
+
+  @Mutation((type) => Boolean)
+  async updateUser(
+    @Arg("id", (type) => Int) id: number,
+    @Arg("payload", (type) => PartialUpdateUserInput) payload: PartialUpdateUserInput
+  ) {
+    await DatabaseUserModel.update({id}, {...payload});
+    return true;
+  }
+
+  @Mutation((type) => Boolean)
+  async deleteUser(@Arg("id", (type) => Int) id: number) {
+    await DatabaseUserModel.delete(id);
     return true;
   }
 

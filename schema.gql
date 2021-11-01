@@ -12,6 +12,14 @@ type DatabaseUserModel {
 
 type Mutation {
   createUser(payload: UserInput!): Boolean!
+  deleteUser(id: Int!): Boolean!
+  updateUser(id: Int!, payload: PartialUpdateUserInput!): Boolean!
+}
+
+input PartialUpdateUserInput {
+  cpf: String
+  email: String
+  nome: String
 }
 
 type Query {

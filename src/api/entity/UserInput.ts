@@ -16,3 +16,19 @@ export class UserInput {
   @Length(9, 9)
   cpf: string;
 }
+
+@InputType()
+export class PartialUpdateUserInput {
+  @Field({ nullable: true })
+  @Length(1, 42)
+  nome: string;
+
+  @Field({ nullable: true })
+  @IsEmail()
+  @Length(1, 42)
+  email: string;
+
+  @Field({ nullable: true })
+  @Length(9, 9)
+  cpf: string;
+}
