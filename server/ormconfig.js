@@ -1,6 +1,8 @@
-{
+const host = process.env.HOST || "localhost"
+
+module.exports = {
     "type": "mysql",
-    "host": "db",
+    "host": host,
     "port": 3306,
     "username": "root",
     "password": "password",

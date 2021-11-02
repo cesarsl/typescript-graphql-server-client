@@ -5,10 +5,17 @@ import { useMutation } from "@apollo/client";
 function DeleteUser() {
   const [id, setName] = useState("");
 
-  const [deleteUser, { error }] = useMutation(DELETE_USER);
+  const [deleteUser] = useMutation(DELETE_USER, { onCompleted: (data) => { return {data}}});
 
+  const onClick = () => {
+    if (!id) {
+      alert("Preencha com um ID")
+    } else {
+      deleteUser({ variables: { id: parseInt(id) } });
+    }
+  };
   return (
-    <div className="createUser">
+    <div className="tab-content">
       <input
         type="text"
         placeholder="Id"
@@ -16,11 +23,7 @@ function DeleteUser() {
           setName(event.target.value);
         }}
       />
-      <button
-        onClick={() => { deleteUser({ variables: { id: parseInt(id) }}) }}
-      >
-        Delete
-      </button>
+      <button onClick={onClick}>Remover</button>
     </div>
   );
 }

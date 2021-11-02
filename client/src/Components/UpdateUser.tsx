@@ -1,21 +1,8 @@
 import React, { useState } from "react";
 import { UPDATE_USER } from "../Graphql/Mutation";
 import { useMutation } from "@apollo/client";
+import { removeEmptyFields } from "../Helpers/ArgumentParser";
 
-function removeEmptyFields(nome: String, email: String, cpf: String) {
-    let searchParameters: any = {
-        nome: nome,
-        email: email,
-        cpf: cpf,
-      };
-      let query: any = {};
-      Object.keys(searchParameters).forEach((key) => {
-        if (searchParameters[key]) {
-          query[key] = searchParameters[key];
-        }
-      });
-    return query;
-}
 
 function UpdateUser() {
   const [id, setId] = useState("");
@@ -23,10 +10,23 @@ function UpdateUser() {
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
 
-  const [updateUser, { error }] = useMutation(UPDATE_USER);
+  const [updateUser] = useMutation(UPDATE_USER);
+
+  const onClick = () => {
+    if (!id) {
+      alert("É necessário informar um ID")
+    } else {
+      updateUser({
+        variables: {
+          id: parseInt(id),
+          payload: removeEmptyFields(nome, email, cpf),
+        },
+      });
+    }
+  };
 
   return (
-    <div className="createUser">
+    <div className="tab-content">
       <input
         type="text"
         placeholder="Id"
@@ -55,15 +55,7 @@ function UpdateUser() {
           setCpf(event.target.value);
         }}
       />
-      <button
-        onClick={() => {
-          updateUser({
-            variables: { id: parseInt(id), payload: removeEmptyFields(nome, email, cpf) },
-          });
-        }}
-      >
-        Update
-      </button>
+      <button onClick={onClick}>Atualizar</button>
     </div>
   );
 }

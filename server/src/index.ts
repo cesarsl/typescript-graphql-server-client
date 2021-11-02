@@ -21,7 +21,7 @@ async function startApi() {
   const server = new ApolloServer({
     schema,
     context: ({ req, res }) => ({ req, res }),
-    plugins: [ApolloServerPluginCacheControl({ defaultMaxAge: 350 })]
+    plugins: [ApolloServerPluginCacheControl({ defaultMaxAge: 10 })],
   });
 
   await server.start();
@@ -29,7 +29,7 @@ async function startApi() {
   server.applyMiddleware({ app });
 
   app.listen(port, () =>
-    console.log("Servidor executando em http://localhost:4000/graphql")
+    console.log(`Servidor executando em http://localhost:${port}/graphql`)
   );
 }
 

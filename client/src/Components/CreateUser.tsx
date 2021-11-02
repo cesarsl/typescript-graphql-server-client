@@ -7,10 +7,19 @@ function CreateUser() {
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
 
-  const [createUser, { error }] = useMutation(CREATE_USER);
+  const [createUser] = useMutation(CREATE_USER);
 
+  const onClick = () => {
+    if (!nome || !email || cpf) {
+      alert("Preencha todos os campos")
+    } else {
+      createUser({
+        variables: { payload: { nome: nome, email: email, cpf: cpf } },
+      });
+    }
+  };
   return (
-    <div className="createUser">
+    <div className="tab-content">
       <input
         type="text"
         placeholder="Nome"
@@ -32,15 +41,7 @@ function CreateUser() {
           setCpf(event.target.value);
         }}
       />
-      <button
-        onClick={() => {
-          createUser({
-            variables: { payload: { nome: nome, email: email, cpf: cpf }},
-          });
-        }}
-      >
-        Create
-      </button>
+      <button onClick={onClick}>Criar</button>
     </div>
   );
 }
