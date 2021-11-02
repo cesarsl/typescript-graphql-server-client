@@ -1,6 +1,10 @@
 {
-    "type": "sqlite",
-    "database": "database.sqlite",
+    "type": "mysql",
+    "host": "db",
+    "port": 3306,
+    "username": "root",
+    "password": "password",
+    "database": "db",
     "synchronize": true,
     "logging": false,
     "entities": [

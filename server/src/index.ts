@@ -1,4 +1,5 @@
-import { ApolloServer } from "apollo-server-express";
+import { ApolloServer,  } from "apollo-server-express";
+import { ApolloServerPluginCacheControl } from "apollo-server-core";
 import * as Express from "express";
 import { createConnection } from "typeorm";
 import "reflect-metadata";
@@ -14,12 +15,13 @@ async function startApi() {
 
   const schema = await buildSchema({
     resolvers: [UserResolver],
-    emitSchemaFile: true,
+    emitSchemaFile: true
   });
 
   const server = new ApolloServer({
     schema,
     context: ({ req, res }) => ({ req, res }),
+    plugins: [ApolloServerPluginCacheControl({ defaultMaxAge: 350 })]
   });
 
   await server.start();

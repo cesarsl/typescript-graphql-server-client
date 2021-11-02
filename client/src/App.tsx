@@ -11,7 +11,7 @@ import UpdateUser from './Components/UpdateUser'
 
 function App() {
   const client = new ApolloClient({
-    uri: "http://localhost:4000/graphql",
+    uri: "http://localhost:8080/graphql",
     cache: new InMemoryCache(),
   });
 
