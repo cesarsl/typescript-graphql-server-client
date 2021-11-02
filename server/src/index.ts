@@ -8,6 +8,8 @@ import UserResolver from "./resolvers/User";
 async function startApi() {
   const app = Express();
 
+  const port = process.env.PORT || 4000
+
   await createConnection();
 
   const schema = await buildSchema({
@@ -24,7 +26,7 @@ async function startApi() {
 
   server.applyMiddleware({ app });
 
-  app.listen(4000, () =>
+  app.listen(port, () =>
     console.log("Servidor executando em http://localhost:4000/graphql")
   );
 }

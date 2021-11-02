@@ -4,9 +4,9 @@
     "synchronize": true,
     "logging": false,
     "entities": [
-        "src/api/entity/**/*.ts"
+        "src/entity/**/*.ts"
     ],
     "cli": {
-        "entitiesDir": "src/api/entity"
+        "entitiesDir": "src/entity"
     }
 }

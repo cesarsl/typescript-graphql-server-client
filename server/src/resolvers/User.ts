@@ -5,8 +5,8 @@ import { UserInput, PartialUpdateUserInput } from "../entity/UserInput";
 @Resolver((of) => DatabaseUserModel)
 export default class {
   @Mutation((type) => Boolean)
-  async createUser(@Arg("payload", (type) => UserInput) payload: UserInput) {
-    await DatabaseUserModel.insert(payload);
+  async createUser(@Arg("payload") { nome, email, cpf }: UserInput) {
+    await DatabaseUserModel.insert({nome, email, cpf});
     return true;
   }
 

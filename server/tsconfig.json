@@ -10,7 +10,7 @@
       "strictPropertyInitialization": false,
       "sourceMap": true,
       "emitDecoratorMetadata": true,
-      "experimentalDecorators": true
+      "experimentalDecorators": true,
     },
     "include": ["./src/**/*", "./src/*"],
     "exclude": ["./test", "./node_modules", "./dist"]
