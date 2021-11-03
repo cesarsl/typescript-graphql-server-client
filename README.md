@@ -78,6 +78,8 @@ Fazendo uma filtragem por qualquer campo, em um passo seguinte esvaziar os campo
 
 ## Pontos de melhoria
 
+- Testes para aplicação frontend
+- Refactoring do código da aplicação React para melhorar legibilidade
 - Tratamento de erros
 - Feedback das respostas do sistema (criar, atualizar, remover)
 - Proxy para múltiplas instâncias do servidor
